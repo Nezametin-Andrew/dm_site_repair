@@ -1,0 +1,133 @@
+    {% load static %}
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>Наше портфолио</h2>
+            <p>Примеры наших работ</p>
+          </div>
+  
+
+          <script>
+            function showSlide(id, ext, amo){
+                var portfolioItem = document.getElementsByClassName('portfolio-item');
+                const lightbox = GLightbox({
+                    touchNavigation: true,
+                    loop: true,
+                });
+                let baseURL = 'http://localhost:8000/'
+                let el = []
+                for (i = 1; i <= amo; i++){
+                    el.push({
+                        'href': `${baseURL}static/assets/img/portfolio/kv${id}/kv-${id}-${i}.${ext}`,
+                        'type': 'image',
+                        'title': '',
+                        'description': ''
+                    })
+                }
+                const myGallery = GLightbox({
+                    elements: el,
+                    autoplayVideos: true,
+                });
+                myGallery.open();
+            }
+          </script>
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app portfolio-item-1" onclick="showSlide('1', 'jpeg', 10)" style="cursor: pointer;">
+                <div class="portfolio-wrap">
+                    
+                    <img src="{% static 'assets/img/portfolio/main1.jpeg' %}" class="img-fluid" alt="">
+                    
+                    <div class="portfolio-info">
+                    <h4>2-к квартира 87 м²</h4>
+                    <p>Отремонтирована по тарифу «Фикс ремонт»</p>
+                    <div class="portfolio-links">
+
+                    </div>
+                    </div>
+                </div>
+                </div>
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web portfolio-item-2" onclick="showSlide('2', 'jpeg', 12)" style="cursor: pointer;">
+              <div class="portfolio-wrap">
+                <img src="{% static 'assets/img/portfolio/main2.jpeg' %}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>3-к квартира 89 м²</h4>
+                  <p>Квартира в современном стиле</p>
+
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="showSlide('3', 'jpg', 20)" style="cursor: pointer;">
+              <div class="portfolio-wrap">
+                <img src="{% static 'assets/img/portfolio/main3.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>2-к квартира 63 м²</h4>
+                  <p>Дизайн квартиры для молодой пары</p>
+
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="showSlide('4', 'jpeg', 11)" style="cursor: pointer;">
+              <div class="portfolio-wrap">
+                <img src="{% static 'assets/img/portfolio/main4.jpeg' %}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>3-к квартира 85 м²</h4>
+                  <p></p>
+
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="showSlide('5', 'jpg', 9)" style="cursor: pointer;">
+              <div class="portfolio-wrap">
+                <img src="{% static 'assets/img/portfolio/main5.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>1-к квартира 56 м²</h4>
+                  <p></p>
+
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="showSlide('6', 'jpg', 16)" style="cursor: pointer;">
+              <div class="portfolio-wrap">
+                <img src="{% static 'assets/img/portfolio/main6.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>2-к квартира 68 м²</h4>
+                  <p></p>
+
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="showSlide('7', 'jpg', 27)" style="cursor: pointer;">
+              <div class="portfolio-wrap">
+                <img src="{% static 'assets/img/portfolio/main7.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>3-к квартира 88 м²</h4>
+                  <p></p>
+
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="showSlide('8', 'jpg', 22)" style="cursor: pointer;">
+              <div class="portfolio-wrap">
+                <img src="{% static 'assets/img/portfolio/main8.jpg' %}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>2-к квартира 67 м²</h4>
+                  <p></p>
+
+                </div>
+              </div>
+            </div>
+  
+
+  
+          </div>
+  
+        </div>
+      </section><!-- End Portfolio Section -->

@@ -1,0 +1,114 @@
+{% load static %}
+<script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+<style>
+    .sl-container {
+        
+        margin: 20px auto;
+        overflow: hidden;
+        position: relative;
+        width: 940px;
+        height: 620px;
+        box-sizing: border-box;
+        box-shadow: 10px 4px 12px rgba(0,0,0,0.7), 10px 16px 20px rgba(0,0,0,0.7);
+    }
+    .sl-container .view {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+    .sl-container .view img {
+        width: 940px;
+        max-width: 940px;
+    }
+    .sl-container .view-before {
+        z-index: 100;
+    }
+    .sl-container .view-after {
+        width: 200px;
+        z-index: 200;
+    }
+    .sl-container .dragme {
+        position: absolute;
+        width: 10px;
+        height: 100%;
+        top: 0px;
+        left: 100px;
+        background-color: #BFE2FF;
+        cursor: pointer;
+        z-index: 300;
+    }
+    .sl-container .dr-circle {
+        position: absolute;
+        top: calc(50% - 20px);
+        left: -15px;
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        background-color: #BFE2FF;
+        cursor: pointer;
+        z-index: 300;
+    }
+    .sl-container .dr-circle i {
+        line-height: 40px;
+        font-size: 20px;
+        color: #337AB7;
+        font-weight: bold;
+    }
+    @media screen and (max-width: 600px) {
+        .sl-container {
+            width: 320px;
+            height: 210px;
+        }
+        .sl-container .view img {
+            width: 320px;
+            max-width: 320px;
+        }
+    }    
+</style>
+<div class="container mt-5 mb-5">
+
+    <div class="text-center">
+        <h3>Доводим проекты до результата, как на картинке</h3>
+        <p> Как обустроить свою первую квартиру 8 (989) 777-68-69</p>
+        
+      </div>
+    <div class="sl-container">
+        <div class="view view-after">
+            <img src="{% static 'assets/img/slide_ol_d/1.jpeg' %}"/>      
+        </div>
+        <div class="view view-before">
+            <img src="{% static 'assets/img/slide_ol_d/2.jpeg' %}"/>
+        </div>
+        <div class="dragme"><div class="dr-circle"><i class="fa fa-arrows-h" aria-hidden="true"></i></div></div>
+    </div>
+</div>
+<script>
+    (function($) {
+        var $dragMe = $(".dragme"),
+        $container = $(".sl-container"),
+        $viewAfter = $(".view-after");
+        $dragMe.draggable({
+            containment: "parent",
+            drag: function() {
+                $viewAfter.css({
+                    width : parseFloat($(this).css('left')) + 5
+                });
+            }
+        });
+        $container.on("click", function(event) {
+            var eventLeft = event.pageX - $container.offset().left - 15;
+            animateTo(eventLeft);
+        });
+        animateTo("50%");
+        function animateTo(_left) {
+            $dragMe.animate({
+                left: _left
+            }, 'slow', 'linear');
+            $viewAfter.animate({
+                width: _left
+            }, 'slow', 'linear');
+        }
+    })(jQuery);
+</script>

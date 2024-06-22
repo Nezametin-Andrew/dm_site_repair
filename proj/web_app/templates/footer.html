@@ -8,9 +8,9 @@
             <div class="footer-info" id="contacts">
               <h3>dpr<span>.</span></h3>
               <p>
-                Новороссийск,<br>
-                пр. Дзержинского 229,<br>
-                2-й этаж, офис 7<br>
+		{% for a in address %} 
+		{{a}}<br>
+		{% endfor %}
                 <br>
                 <strong>Телефон:</strong> +7(989) 777-68-69<br>
                 <strong>Email:</strong> dizaynproremont@mail.ru  <br>
@@ -50,7 +50,7 @@
           <div class="col-lg-4 col-md-6 footer-newsletter" id="get-call">
             <h4>Заказать звонок</h4>
             <p>Закажите звонок и наши менеджеры свяжутся с Вами в ближайшее время</p>
-            <form method="post">
+	    <form action="{% url 'main' %}" method="post">
               {% csrf_token %}
               <p><input type="text" name="username" placeholder="Ваше имя"></p>
               <p><input type="text" name="userphone" placeholder="Ваш телефон"></p>

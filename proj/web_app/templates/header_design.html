@@ -1,0 +1,143 @@
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <h1 class="logo me-auto me-lg-0"><a href="/">DpR<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#header">Главная</a></li>
+          <li class="dropdown"><a href="#"><span>Дизайн проекты</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'design' city='anapa' %}">Дизайн квартир в Анапе</a></li>
+              <li><a href="{% url 'design' city='novorossiysk' %}">Дизайн квартир в Новороссийске</a></li>
+              <li><a href="{% url 'design' city='rostov-na-donu' %}">Дизайн квартир в Ростове-на-Дону</a></li>
+              <li><a href="{% url 'design' city='krasnodar' %}">Дизайн квартир в Краснодаре</a></li>
+              
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Ремонт по фиксированной цене</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'repair' city='anapa' %}">Ремонт квартир в Анапе</a></li>
+              <li><a href="{% url 'repair' city='novorossiysk' %}">Ремонт квартир в Новороссийске</a></li>
+              <li><a href="{% url 'repair' city='rostov-na-donu' %}">Ремонт квартир в Ростове-на-Дону</a></li>
+              <li><a href="{% url 'repair' city='krasnodar' %}">Ремонт квартир в Краснодаре</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#portfolio">Портфолио</a></li>
+          <li><a class="nav-link scrollto" href="#contacts">Контакты</a></li>
+          <li><a class="nav-link scrollto" href="/blog">Блог</a></li>
+          
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="tel:89897776869" class="scrollto"> 8 (989) 777-68-69</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>Дизайн квартир в {{city}}</h1>
+          <h2>Создаем уникальные интерьеры от 1000 ₽ за м2</h2>
+        </div>
+        
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-xl-3 col-lg-3 mt-5">
+
+          <!-- <a href="#quiz" class="get-started-btn scrollto bb">Рассчитать стоимость</a> -->
+          <style>
+            .get-started-btn {
+              padding: 10px 20px;
+              background-color: transparent;
+              font-size: 16px;
+              color: #fff;
+              text-decoration: none;
+              cursor: pointer;
+              position: relative;
+              overflow: hidden;
+            }
+            
+            .get-started-btn.bb {
+              position: relative;
+              overflow: hidden;
+            }
+            
+            .get-started-btn.bb::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: 3px solid transparent;
+              border-radius: 5px;
+              animation: borderAnimation 2s linear infinite;
+            }
+            
+            @keyframes borderAnimation {
+              0% {
+                transform: translate(-100%, -100%);
+                border-image: linear-gradient(45deg, #ff7e5f, #feb47b, #ffdb90, #fffc97);
+              }
+              100% {
+                transform: translate(100%, 100%);
+                border-image: linear-gradient(45deg, #ff7e5f, #feb47b, #ffdb90, #fffc97);
+              }
+            }
+            
+            
+          </style>
+        </div>
+      </div>
+      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+        <div class="col-xl-3 col-md-6">
+            <div class="icon-box">
+              
+              <i class="ri-ruler-2-line"></i>
+              <h3><a href="#">Авторский надзор в подарок</a></h3>
+              <p>Ремонт будет на 100% соответствовать дизайн проекту </p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="icon-box">
+              <i class="ri-gift-line"></i>
+              <h3><a href="#">- 25 % на материалы и мебель</a></h3>
+              <p>Делимся нашими скидками на все, что заложено в проекте</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="icon-box">
+              <i class="ri-shield-check-line"></i>
+              <h3><a href="#">Скидка 50% на дизайн-проект</a></h3>
+              <p>При заказе ремонта</p>
+            </div>
+        <!-- <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="ri-store-line"></i>
+            <h3><a href="">Lorem Ipsum</a></h3>
+          </div>
+        </div>
+
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="ri-calendar-todo-line"></i>
+            <h3><a href="">Sedare Perspiciatis</a></h3>
+          </div>
+        </div> -->
+
+
+      </div>
+
+    </div>
+  </section><!-- End Hero -->

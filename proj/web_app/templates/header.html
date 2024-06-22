@@ -3,7 +3,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">DpR<span>.</span></a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="/">DpR<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -12,25 +12,23 @@
           <li><a class="nav-link scrollto active" href="#header">Главная</a></li>
           <li class="dropdown"><a href="#"><span>Дизайн проекты</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Deep Drop Down 1</a></li>
-              <li><a href="#">Deep Drop Down 2</a></li>
-              <li><a href="#">Deep Drop Down 3</a></li>
-              <li><a href="#">Deep Drop Down 4</a></li>
-              <li><a href="#">Deep Drop Down 5</a></li>
+              <li><a href="{% url 'design' city='anapa' %}">Дизайн квартир в Анапе</a></li>
+              <li><a href="{% url 'design' city='novorossiysk' %}">Дизайн квартир в Новороссийске</a></li>
+              <li><a href="{% url 'design' city='rostov-na-donu' %}">Дизайн квартир в Ростове-на-Дону</a></li>
+              <li><a href="{% url 'design' city='krasnodar' %}">Дизайн квартир в Краснодаре</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Ремонт по фиксированной цене</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Deep Drop Down 1</a></li>
-              <li><a href="#">Deep Drop Down 2</a></li>
-              <li><a href="#">Deep Drop Down 3</a></li>
-              <li><a href="#">Deep Drop Down 4</a></li>
-              <li><a href="#">Deep Drop Down 5</a></li>
+              <li><a href="{% url 'repair' city='anapa' %}">Ремонт квартир в Анапе</a></li>
+              <li><a href="{% url 'repair' city='novorossiysk' %}">Ремонт квартир в Новороссийске</a></li>
+              <li><a href="{% url 'repair' city='rostov-na-donu' %}">Ремонт квартир в Ростове-на-Дону</a></li>
+              <li><a href="{% url 'repair' city='krasnodar' %}">Ремонт квартир в Краснодаре</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#portfolio">Портфолио</a></li>
           <li><a class="nav-link scrollto" href="#contacts">Контакты</a></li>
-          <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="/blog">Блог</a></li>
           <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -55,7 +53,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#about" class="scrollto"> 8 (989) 777-68-69</a>
+      <a href="tel:89897776869" class="scrollto"> 8 (989) 777-68-69</a>
 
     </div>
   </header><!-- End Header -->
@@ -66,7 +64,8 @@
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-          <h1>Ремонт квартир под ключ</h1>
+          <h1>Ремонт квартир под ключ {% if repair  and city %}в {{city}} {% endif %}
+            </h1>
           <h2>Рассчитайте стоимость Вашего ремонта и получите подарок</h2>
         </div>
         
@@ -120,24 +119,31 @@
         </div>
       </div>
       <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-2 col-md-4">
             <div class="icon-box">
               
               <i class="ri-ruler-2-line"></i>
               <h3><a href="#">Бесплатный выезд на замер</a></h3>
             </div>
           </div>
-          <div class="col-xl-3 col-md-6">
+          <div class="col-xl-2 col-md-4">
             <div class="icon-box">
               <i class="ri-gift-line"></i>
               <h3><a href="#">Дизайн-проект в подарок</a></h3>
             </div>
           </div>
-          <div class="col-xl-3 col-md-6">
+          <div class="col-xl-2 col-md-4">
             <div class="icon-box">
               <i class="ri-shield-check-line"></i>
               <h3><a href="#">Гарантия до 2-х лет на наши работы </a></h3>
             </div>
+	  </div>
+	  <div class="col-xl-2 col-md-4">
+          <div class="icon-box last-h3">
+            <i class="ri-shake-hands-line"></i>
+            <h3><a href="">Помощь в приемке помещения от застройщика</a></h3>
+          </div>
+        </div>
         <!-- <div class="col-xl-2 col-md-4">
           <div class="icon-box">
             <i class="ri-store-line"></i>

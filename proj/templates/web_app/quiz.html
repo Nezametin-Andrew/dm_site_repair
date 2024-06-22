@@ -1,0 +1,335 @@
+{% load static %}
+<section id="quiz" class="quiz">
+    <div class="container text-center">
+        <h2>Рассчитайте стоимость ремонта в несколько кликов</h2>
+    </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+                
+              <div class="row">
+                    <div class="col pt-5">
+                        <h4>Выберите состояние вашей квартиры</h4>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-2 ">
+                        <div class="col-img quiz-img-sel col-img-1"></div>
+                        <h5>Черновая отделка</h5>
+                    </div>
+                    <div class="col-lg-2 ">
+                      <div class="col-img quiz-img-sel col-img-2"></div>
+                      <h5>Отделка White box</h5>
+                    </div>
+                    <div class="col-lg-2">
+                      <div class="col-img quiz-img-sel col-img-3"></div>
+                      <h5>Вторичное жилье</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-2">
+                    <a class="get-started-btn  bb"  id="carBtnNext">Далее</a>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              
+              <div class="row">
+                  <div class="col pt-5">
+                      <h4>Выберите площадь вашей квартиры</h4>
+                  </div>
+              </div>
+
+              <div class="row mt-5">
+                <div class="col-lg-6">
+                  <input type="range" class="form-range" id="areaRange" min="20" max="120" step="1" value="20">
+                  <div class="range-labels">
+                    <span>20</span>
+                    <span>120</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-lg-2 text-center show-area ">
+                  <p>Площадь <span id="show-area">20</span> м² </p>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col-lg-2">
+                  <a class="get-started-btn  bb"  id="carBtnNext1" role="button"  data-slide="next">Далее</a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              
+              <div class="row">
+                  <div class="col pt-5">
+                      <h4>Как поступим с материалами?</h4>
+                  </div>
+              </div>
+
+              <div class="row mt-5"> 
+                <div class="col-lg-2 check-material"> 
+                  <p><input type="radio" name="material" checked value="option1">&nbsp;&nbsp; Закуплю сам</p>
+                </div>
+              </div>
+              <div class="row">  
+                <div class="col-lg-3 check-material">
+                  <p><input type="radio" name="material" value="option2">&nbsp;&nbsp; Считайте вместе с материалами</p>
+                </div>
+              </div>
+
+              <div class="row mt-5">
+                <div class="col-lg-2 pt-5">
+                  <a class="get-started-btn bb"  id="carBtnNext2" role="button"  data-slide="next">Далее</a>
+              
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              
+              <div class="row">
+                  <div class="col pt-5">
+                      <h4>Когда планируете начать ремонт? </h4>
+                  </div>
+              </div>
+
+              <div class="row mt-5"> 
+                <div class="col-lg-2 check-date"> 
+                  <p><input type="radio" name="date-repair" checked value="option1">&nbsp;&nbsp;  В течении месяца</p>
+                </div>
+              </div>
+              <div class="row">  
+                <div class="col-lg-3 check-date">
+                  <p><input type="radio" name="date-repair" value="option2">&nbsp;&nbsp;  Через 1 месяц и более</p>
+                </div>
+              </div>
+
+              <div class="row mt-5">
+                <div class="col-lg-2 pt-5">
+                  <a class="get-started-btn bb"  id="carBtnNext3" role="button"  data-slide="next">Далее</a>
+              
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row mt-5">
+                <div class="col-lg-5">
+                  <form id="quiz-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Ваше имя:</label>
+                      <div class="mt-1"></div>
+                      <input type="text" class="form-control" name="user-name" id="user-name"  placeholder="Ваше имя" required>
+                    </div>
+                    <div class="mt-5"></div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Ваш телефон:</label>
+                      <div class="mt-1"></div>
+                      <input type="text" class="form-control" name="user-phone" id="user-phone" placeholder="Ваш телефон" required>
+                    </div>
+                    <div class="mt-3"></div>
+                    <small>Никакого спама и смс, ГАРАНТИРУЕМ!</small> <br>
+                    <br>
+                    <div class="mt-5"></div>
+                    <a class="get-started-btn bb"  id="carBtnNext4" role="button"  data-slide="next">Далее</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="container">
+
+              <div class="row">
+                <div class="col pt-5">
+                    <h4>Спасибо за Ваше обращение, наши менеджеры свяжуться с Вами в ближайшее время.</h4>
+                </div>
+            </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+</section>
+
+<script>
+    var imgQuiz = document.getElementsByClassName('quiz-img-sel');
+    imgQuiz[0].classList.add('active-img');
+    localStorage.setItem('type', 'Черновая отделка');
+    localStorage.setItem('area', '20');
+    localStorage.setItem('material', 'Закуплю сам');
+    localStorage.setItem('date-repair', 'В течении месяца');
+
+    for (i = 0; i < imgQuiz.length; i++){
+        imgQuiz[i].addEventListener('click', function(){
+            for(j = 0; j < imgQuiz.length; j++){
+                imgQuiz[j].classList.remove('active-img');
+            }
+            
+            if (this.classList[this.classList.length - 1] == 'col-img-1'){
+              localStorage.setItem('type', 'Черновая отделка')
+            }
+            if (this.classList[this.classList.length - 1] == 'col-img-2'){
+              localStorage.setItem('type', 'Отделка White box')
+            }
+            if (this.classList[this.classList.length - 1] == 'col-img-3'){
+              localStorage.setItem('type', 'Вторичное жилье')
+            }
+
+            this.classList.add('active-img');
+          
+        })
+    }
+
+    var slides = Array.from(document.getElementsByClassName('carousel-item'));
+    var currentIndex = 0;
+    var totalSlides = slides.length;
+
+    function showSliders(index) {
+      slides.forEach(function(slide) {
+        slide.style.display = 'none';
+      });
+      slides[index].style.display = 'block';
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      showSliders(currentIndex);
+    }
+
+    document.getElementById('carBtnNext').addEventListener('click', function (event) {
+      
+      nextSlide()
+      
+      // Ваш код обработки переключения слайда здесь
+      console.log('Переключение слайда:', 'Слайд',  '=> Слайд');
+    });
+
+    document.getElementById('carBtnNext1').addEventListener('click', function (event) {
+      nextSlide()
+      
+      // Ваш код обработки переключения слайда здесь
+      console.log('Переключение слайда:', 'Слайд',  '=> Слайд');
+    });
+
+    document.getElementById('carBtnNext2').addEventListener('click', function (event) {
+      nextSlide()
+      
+      // Ваш код обработки переключения слайда здесь
+      console.log('Переключение слайда:', 'Слайд',  '=> Слайд');
+    });
+    
+    document.getElementById('carBtnNext3').addEventListener('click', function (event) {
+      nextSlide()
+      
+      // Ваш код обработки переключения слайда здесь
+      console.log('Переключение слайда:', 'Слайд',  '=> Слайд');
+    });
+
+    document.getElementById('carBtnNext4').addEventListener('click', function (event) {
+      var username = document.getElementById('user-name').value;
+      var userphone = document.getElementById('user-phone').value;
+  
+      if (!username || !userphone) {
+         // Отменить отправку формы, если поля не заполнены
+        alert('Заполните все поля формы!');
+      }
+      else if(userphone.length < 11){
+        alert("Некорректная длина телефона, минимальное количество символов 11")
+      }
+      else if(username < 3){
+        alert("Некорректная длина имени, минимальное количество символов 3")
+      }else{
+
+
+        $.post('{% url "quiz" %}', 
+        {
+          csrfmiddlewaretoken: document.querySelector('[name=csrfmiddlewaretoken]').value,
+          type: localStorage.getItem('type'),
+          area: localStorage.getItem('area'),
+          material: localStorage.getItem('material'),
+          date_repair: localStorage.getItem('date-repair'),
+          name: username,
+          phone: userphone
+        },
+        function(data){
+          if (data.status == 'ok'){
+            nextSlide();
+          }
+          else{
+            alert('Произошла ошибка при отправке формы, попробуйте перезагрузить страницу или повторить запрос позже.')
+          }
+        })
+      }
+      
+      // Ваш код обработки переключения слайда здесь
+      console.log('Переключение слайда:', 'Слайд',  '=> Слайд');
+    });
+    
+    $(document).ready(function() {
+      // Обработчик изменения значения ползунка
+      $('#areaRange').on('input', function() {
+        // Обновляем значение метки площади
+        $('#areaLabel').text($(this).val());
+        $('#show-area').text($(this).val());
+
+        localStorage.setItem('area', $(this).val());
+      });
+    });
+
+    document.querySelectorAll('.check-material input[type="radio"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+          // Выполните здесь необходимые действия при изменении выбора радио кнопок
+          console.log('Выбрано: ', this.value);
+          if(this.value == 'option1'){
+            localStorage.setItem('material', 'Закуплю сам');
+          }
+          if(this.value == 'option2'){
+            localStorage.setItem('material', 'Считайте вместе с материалами');
+          }
+      });
+  });
+
+  document.querySelectorAll('.check-date input[type="radio"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        // Выполните здесь необходимые действия при изменении выбора радио кнопок
+        console.log('Выбрано: ', this.value);
+        if(this.value == 'option1'){
+          localStorage.setItem('date-repair', 'В течении месяца');
+        }
+        if(this.value == 'option2'){
+          localStorage.setItem('date-repair', 'Через 1 месяц и более');
+        }
+    });
+});
+
+
+</script>

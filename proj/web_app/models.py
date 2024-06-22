@@ -10,3 +10,10 @@ class Quiz(models.Model):
     name = models.CharField(max_length=255, verbose_name='')
     phone = models.CharField(max_length=255, verbose_name='')
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class CallMi(models.Model):
+
+    name = models.CharField(max_length=255, verbose_name='')
+    phone = models.CharField(max_length=255, verbose_name='')
+    created_at = models.DateTimeField(auto_now_add=True)

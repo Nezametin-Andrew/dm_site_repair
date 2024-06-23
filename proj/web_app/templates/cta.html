@@ -1,12 +1,25 @@
     <!-- ======= Cta Section ======= -->
 
+    <script>
+      let popup = document.getElementsByClassName('container_popup')[0];
+
+
+      function showPopUp(){
+        popup.classList.remove('hidden');
+      }
+    </script>
+    <style>
+      .cta-btn{
+        cursor: pointer;
+      }
+    </style>
     <section id="cta" class="cta">
         <div class="container" data-aos="zoom-in">
   
           <div class="text-center">
             <h3>Закажите звонок</h3>
             <p> Закажите звонок или позвоните нам по номеру 8 (989) 777-68-69, наши специалисты сориентируют вас по стоимости и срокам Вашего ремонта</p>
-            <a class="cta-btn" href="" >Заказать звонок</a>
+            <a class="cta-btn" onclick="showPopUp()" >Заказать звонок</a>
           </div>
   
         </div>

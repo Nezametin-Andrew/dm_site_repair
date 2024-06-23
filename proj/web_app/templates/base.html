@@ -18,7 +18,7 @@
     <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
     <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
     <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Template Main CSS File -->
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -71,7 +71,125 @@
 </head>
 <body>
     {% include 'popup.html' %}
- 
+    
+
+    <style>
+        /* Стили для попапов */
+        .popup {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0,0,0,0.6);
+        }
+    
+        .popup-content {
+          background-color: #fff;
+          margin: 15% auto;
+          padding: 20px;
+          border-radius: 10px;
+          width: 80%;
+          max-width: 400px;
+          text-align: center;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        .popup-content .icon {
+          font-size: 50px;
+          margin-bottom: 20px;
+        }
+    
+        .popup-content.success .icon {
+          color: #28a745;
+        }
+    
+        .popup-content.error .icon {
+          color: #dc3545;
+        }
+    
+        .popup-content p {
+          font-size: 18px;
+          margin-bottom: 20px;
+        }
+    
+        .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+    
+        .close:hover,
+        .close:focus {
+          color: black;
+        }
+
+        #validationPopup{
+          z-index: 1000;
+        }
+      </style>
+<!-- Успешный попап -->
+<div id="successPopup" class="popup">
+    <div class="popup-content success">
+      <span class="close" onclick="closePopup('successPopup')">&times;</span>
+      <div class="icon"><i class="fas fa-check-circle"></i></div>
+      <p>Ваш запрос на обратный звонок был успешно отправлен!</p>
+    </div>
+  </div>
+  
+  <!-- Ошибочный попап -->
+  <div id="errorPopup" class="popup">
+    <div class="popup-content error">
+      <span class="close" onclick="closePopup('errorPopup')">&times;</span>
+      <div class="icon"><i class="fas fa-times-circle"></i></div>
+      <p>Произошла ошибка. Пожалуйста, попробуйте еще раз.</p>
+    </div>
+  </div>
+
+<!-- Уведомление об ошибке заполнения формы -->
+<div id="validationPopup" class="popup">
+  <div class="popup-content error">
+    <span class="close" onclick="closePopup('validationPopup')">&times;</span>
+    <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+    <p>Пожалуйста, заполните все поля.</p>
+  </div>
+</div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Открываем попап на основе контекста
+      {% if status == 'success' %}
+        openPopup('successPopup');
+      {% elif status == 'error' %}
+        openPopup('errorPopup');
+      {% endif %}
+  
+      function openPopup(popupId) {
+        document.getElementById(popupId).style.display = "block";
+        // Закрываем попап через 5 секунд
+        setTimeout(function() {
+          closePopup(popupId);
+        }, 5000);
+      }
+  
+      function closePopup(popupId) {
+        document.getElementById(popupId).style.display = "none";
+      }
+  
+      // Закрываем попап по клику на крестик
+      document.querySelectorAll('.close').forEach(function(closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          closePopup(closeBtn.parentElement.parentElement.id);
+        });
+      });
+    });
+  </script>
+
     {% if design %}
     {% include 'header_design.html' %}
     {% else %}

@@ -1,5 +1,14 @@
   <!-- ======= Footer ======= -->
   <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/inputmask.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var phoneInputs = document.querySelectorAll('input[name="phone"]');
+      var inputmask = new Inputmask("8(999)999-99-99");
+      phoneInputs.forEach(function(phoneInput) {
+        inputmask.mask(phoneInput);
+      });
+    });
+  </script>
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -52,19 +61,36 @@
             <h4>Заказать звонок</h4>
             <p>Закажите звонок и наши менеджеры свяжутся с Вами в ближайшее время</p>
             
-            <script>
-              document.addEventListener("DOMContentLoaded", function() {
-                var phoneInput = document.querySelector('input[name="phone"]');
-                var inputmask = new Inputmask("8(999)999-99-99");
-                inputmask.mask(phoneInput);
-              });
-            </script>
-	          <form action="{% url 'main' %}" method="post">
+
+	          <form action="{% url 'main' %}" method="post" onsubmit="return validateForm()" id="callbackForm1">
               {% csrf_token %}
               <p><input type="text" name="name" placeholder="Ваше имя"></p>
               <p><input type="text" name="phone" placeholder="Ваш телефон"></p>
               <p><input type="submit" value="Заказать звонок"></p>
             </form>
+
+            <script>
+              function validateForm() {
+                const name = document.forms["callbackForm1"]["name"].value;
+                const phone = document.forms["callbackForm1"]["phone"].value;
+            
+                if (name === "" || phone === "") {
+                  openPopup('validationPopup');
+                  return false;  // Не отправляем форму
+                }
+            
+                return true;  // Отправляем форму
+              }
+            
+              function openPopup(popupId) {
+                document.getElementById(popupId).style.display = "block";
+                // Закрываем попап через 5 секунд
+                setTimeout(function() {
+                  closePopup(popupId);
+                }, 5000);
+              }
+            
+            </script>
 
           </div>
 

@@ -1,12 +1,24 @@
     <!-- ======= Cta Section ======= -->
+    <script>
+      let popup = document.getElementsByClassName('container_popup')[0];
 
+
+      function showPopUp(){
+        popup.classList.remove('hidden');
+      }
+    </script>
+    <style>
+      .cta-btn{
+        cursor: pointer;
+      }
+    </style>
     <section id="cta" class="cta mt-5">
         <div class="container" data-aos="zoom-in">
   
           <div class="text-center">
             <h3>Наши работы</h3>
             <p> Архитектура, дизайн интерьера жилых и коммерческих помещений Позвоните нам по телефону 8 (989) 777-68-69 и мы покажем все наши проекты</p>
-            <a class="cta-btn" href="https://forms.amocrm.ru/rtvtrzm" >Заказать звонок</a>
+            <a class="cta-btn" onclick="showPopUp()" >Заказать звонок</a>
           </div>
   
         </div>

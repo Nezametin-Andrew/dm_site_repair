@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 
     'web_app.apps.WebAppConfig',
-    'blog.apps.BlogConfig',
+    #'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
@@ -55,8 +56,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'blog.middleware.AnonymousUserMiddleware',
-    'blog.middleware.VisitMiddleware',
+    #'blog.middleware.AnonymousUserMiddleware',
+    #'blog.middleware.VisitMiddleware',
 ]
 
 ROOT_URLCONF = 'proj.urls'
@@ -151,3 +152,12 @@ CKEDITOR_UPLOAD_PATH = "upload/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+#EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
+
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')

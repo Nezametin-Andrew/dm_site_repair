@@ -1,11 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/inputmask.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var phoneInput = document.querySelector('input[name="phone"]');
-    var inputmask = new Inputmask("8(999)999-99-99");
-    inputmask.mask(phoneInput);
-  });
-</script>
+
 <style>
     .container_popup{
         position: fixed;
@@ -163,10 +157,11 @@
         display: none;
       }
 </style>
+
 <div class="container_popup hidden">
-      <form action="" class="login" method="post">
+      <form action="" class="login" method="post" onsubmit="return validateForm()" id="callbackForm">
         {% csrf_token %}
-        <div class="close_btn">x</div>
+        <div class="close_btn" onclick="closePopUp()">x</div>
     <h1>Заказать звонок</h1>
     <input type="text" name="name" class="login-input" placeholder="Ваше имя" autofocus>
     <input type="text" name="phone" class="login-input" placeholder="Ваш телефон">
@@ -176,3 +171,55 @@
 
 
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var phoneInput = document.querySelector('input[name="phone"]');
+    var inputmask = new Inputmask("8(999)999-99-99");
+    inputmask.mask(phoneInput);
+
+    let closeBtn = document.getElementsByClassName('close_btn')[0];
+    closeBtn.addEventListener("click", closePopUp);
+
+    function validateForm() {
+      const name = document.forms["callbackForm"]["name"].value;
+      const phone = document.forms["callbackForm"]["phone"].value;
+  
+      if (name === "" || phone === "") {
+        openPopup('validationPopup');
+        return false;  // Не отправляем форму
+      }
+  
+      return true;  // Отправляем форму
+    }
+
+  });
+
+  function validateForm() {
+    const name = document.forms["callbackForm"]["name"].value;
+    const phone = document.forms["callbackForm"]["phone"].value;
+
+    if (name === "" || phone === "") {
+      openPopup('validationPopup');
+      return false;  // Не отправляем форму
+    }
+
+    return true;  // Отправляем форму
+  }
+
+  function openPopup(popupId) {
+    document.getElementById(popupId).style.display = "block";
+    // Закрываем попап через 5 секунд
+    setTimeout(function() {
+      closePopup(popupId);
+    }, 5000);
+  }
+
+
+  function closePopUp() {
+    let containerPopup = document.querySelector('.container_popup');
+    containerPopup.classList.add('hidden');
+  }
+
+
+
+</script>

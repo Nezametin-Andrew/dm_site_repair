@@ -3,6 +3,7 @@ from django.views import View
 from django.http import JsonResponse
 
 from .models import Quiz, CallMi
+from .sent_contact import add_client
 
 
 CITY = {
@@ -33,6 +34,7 @@ class MainPage(View):
             del dct['csrfmiddlewaretoken']
 
         try:
+            add_client(dct)
             CallMi.objects.create(**dct)
             return render(request, 'web_app/index.html', {})
         except Exception as e:
@@ -67,12 +69,13 @@ class RepairView(View):
 class QuizView(View):
 
     def post(self, request):
+        amo_dct = {'name': request.POST.get('user-name'), 'phone': request.POST.get('user-phone')}
         try:
             dct = {key: request.POST.get(key) for key in request.POST}
 
             if 'csrfmiddlewaretoken' in dct:
                 del dct['csrfmiddlewaretoken']
-
+            add_client(amo_dct)
             Quiz.objects.create(**dct)
             return JsonResponse({'status': 'ok'})
         except Exception as e:

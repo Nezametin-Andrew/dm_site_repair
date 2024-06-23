@@ -1,4 +1,5 @@
   <!-- ======= Footer ======= -->
+  <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/inputmask.min.js"></script>
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -50,10 +51,18 @@
           <div class="col-lg-4 col-md-6 footer-newsletter" id="get-call">
             <h4>Заказать звонок</h4>
             <p>Закажите звонок и наши менеджеры свяжутся с Вами в ближайшее время</p>
-	    <form action="{% url 'main' %}" method="post">
+            
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                var phoneInput = document.querySelector('input[name="phone"]');
+                var inputmask = new Inputmask("8(999)999-99-99");
+                inputmask.mask(phoneInput);
+              });
+            </script>
+	          <form action="{% url 'main' %}" method="post">
               {% csrf_token %}
-              <p><input type="text" name="username" placeholder="Ваше имя"></p>
-              <p><input type="text" name="userphone" placeholder="Ваш телефон"></p>
+              <p><input type="text" name="name" placeholder="Ваше имя"></p>
+              <p><input type="text" name="phone" placeholder="Ваш телефон"></p>
               <p><input type="submit" value="Заказать звонок"></p>
             </form>
 

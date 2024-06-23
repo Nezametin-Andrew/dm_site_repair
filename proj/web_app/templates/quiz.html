@@ -140,6 +140,14 @@
             <div class="container">
               <div class="row mt-5">
                 <div class="col-lg-5">
+                  <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/inputmask.min.js"></script>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                      var phoneInput = document.querySelector('input[name="user-phone"]');
+                      var inputmask = new Inputmask("8(999)999-99-99");
+                      inputmask.mask(phoneInput);
+                    });
+                  </script>
                   <form id="quiz-form">
                     {% csrf_token %}
                     <div class="form-group">
